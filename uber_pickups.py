@@ -10,9 +10,10 @@ def load_data(nrows):
      lowercase = lambda x: str(x).lower()
      data.rename(lowercase, axis='columns', inplace=True)
      data[DATE_COLUMN] = pd.to_datetime(data[DATE_COLUMN])
+     data_load_state = st.text('Loading data...')
+    # Load 10,000 rows of data into the dataframe.
+     data = load_data(10000)
+    # Notify the reader that the data was successfully loaded.
+    data_load_state.text('Loading data...done!')
      return data
-data_load_state = st.text('Loading data...')
-# Load 10,000 rows of data into the dataframe.
-data = load_data(10000)
-# Notify the reader that the data was successfully loaded.
-data_load_state.text('Loading data...done!')
+
